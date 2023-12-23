@@ -9,7 +9,7 @@ public class SceneObject : MonoBehaviour
     void Start()
     {
         model.SetActive(false);
-    }
+    } 
 
     void Update()
     {
