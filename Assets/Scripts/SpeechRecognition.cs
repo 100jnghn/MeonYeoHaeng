@@ -8,9 +8,13 @@ public class SpeechRecognition : MonoBehaviour
     private string speechKey = "39cf770484cc49a88518708648e11238";
     private string serviceRegion = "koreacentral";
 
+    public Animator animator;
+
     private async void Start()
     {
         await RecognizeSpeechAsync();
+
+        animator = GetComponent<Animator>();
     }
 
     private async Task RecognizeSpeechAsync()
@@ -25,6 +29,8 @@ public class SpeechRecognition : MonoBehaviour
                 if (result.Reason == ResultReason.RecognizedSpeech)
                 {
                     UnityEngine.Debug.Log($"음성인식 결과: {result.Text}");
+
+                    doAction(result.Text);
                 }
                 else if (result.Reason == ResultReason.NoMatch)
                 {
@@ -43,6 +49,28 @@ public class SpeechRecognition : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    // 인식된 음성에 따른 행동
+    public void doAction(string msg)
+    {
+        switch(msg)
+        {
+            case "Sit.":
+                UnityEngine.Debug.Log("Action : Sit");
+                animator.SetTrigger("doSit");
+                break;
+
+            case "Eat.":
+                UnityEngine.Debug.Log("Action : Eat");
+                animator.SetTrigger("doEat");
+                break;
+
+            case "Turn.":
+                UnityEngine.Debug.Log("Action : Turn");
+                animator.SetTrigger("doTurn");
+                break;
         }
     }
 
