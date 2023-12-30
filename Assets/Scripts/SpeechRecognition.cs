@@ -1,6 +1,7 @@
 using Microsoft.CognitiveServices.Speech;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpeechRecognition : MonoBehaviour
@@ -8,13 +9,16 @@ public class SpeechRecognition : MonoBehaviour
     private string speechKey = "39cf770484cc49a88518708648e11238";
     private string serviceRegion = "koreacentral";
 
-    public Animator animator;
+    Corgi corgi;
+
+    private void Awake()
+    {
+        corgi = GetComponent<Corgi>();
+    }
 
     private async void Start()
     {
         await RecognizeSpeechAsync();
-
-        animator = GetComponent<Animator>();
     }
 
     private async Task RecognizeSpeechAsync()
@@ -59,18 +63,41 @@ public class SpeechRecognition : MonoBehaviour
         {
             case "Sit.":
                 UnityEngine.Debug.Log("Action : Sit");
-                animator.SetTrigger("doSit");
+                corgi.cState = Corgi.state.Sit;
+               
+                corgi.doSit();
                 break;
 
             case "Eat.":
                 UnityEngine.Debug.Log("Action : Eat");
-                animator.SetTrigger("doEat");
+                corgi.cState = Corgi.state.Eat;
+               
+                corgi.doEat();
                 break;
 
             case "Turn.":
                 UnityEngine.Debug.Log("Action : Turn");
-                animator.SetTrigger("doTurn");
+                corgi.cState = Corgi.state.Turn;
+                
+                corgi.doTurn();
                 break;
+
+            case "Happy.": // 이름 부름 -> 쳐다봄
+                UnityEngine.Debug.Log("Action : Look");
+                corgi.cState = Corgi.state.Look;
+               
+                corgi.doLook();
+                break;
+
+            case "Stand up.": // 일어나!
+
+                UnityEngine.Debug.Log("Action : Sit UP");
+
+                corgi.cState = Corgi.state.SitUp;
+                corgi.doSitUp();
+
+                break;
+
         }
     }
 
