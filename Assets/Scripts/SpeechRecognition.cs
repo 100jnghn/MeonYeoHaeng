@@ -8,7 +8,8 @@ public class SpeechRecognition : MonoBehaviour
 {
     private string speechKey = "39cf770484cc49a88518708648e11238";
     private string serviceRegion = "koreacentral";
-
+    
+    public GameObject DogGum;
     Corgi corgi;
 
     private void Awake()
@@ -92,12 +93,17 @@ public class SpeechRecognition : MonoBehaviour
             case "Stand up.": // 일어나!
 
                 UnityEngine.Debug.Log("Action : Sit UP");
-
                 corgi.cState = Corgi.state.SitUp;
-                corgi.doSitUp();
 
+                corgi.doSitUp();
                 break;
 
+            case "Bone.": // 뼈 생성
+                UnityEngine.Debug.Log("Create : Bone");
+                GameObject clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+                clone.SetActive(true);
+
+                break;
         }
     }
 
