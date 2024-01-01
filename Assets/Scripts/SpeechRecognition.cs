@@ -10,6 +10,7 @@ public class SpeechRecognition : MonoBehaviour
     private string serviceRegion = "koreacentral";
     
     public GameObject DogGum;
+    public GameObject clone;
     Corgi corgi;
 
     private void Awake()
@@ -72,8 +73,9 @@ public class SpeechRecognition : MonoBehaviour
             case "Eat.":
                 UnityEngine.Debug.Log("Action : Eat");
                 corgi.cState = Corgi.state.Eat;
-               
                 corgi.doEat();
+
+                Destroy(clone);
                 break;
 
             case "Turn.":
@@ -100,7 +102,7 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Bone.": // »À »ý¼º
                 UnityEngine.Debug.Log("Create : Bone");
-                GameObject clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+                clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
                 clone.SetActive(true);
 
                 break;
