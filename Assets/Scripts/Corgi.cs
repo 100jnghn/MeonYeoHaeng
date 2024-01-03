@@ -8,6 +8,7 @@ public class Corgi : MonoBehaviour
     // 강아지 상태
     public enum state
     {
+        Start,
         Idle,
         Wait,
         Move,
@@ -21,17 +22,37 @@ public class Corgi : MonoBehaviour
     public state cState = state.Idle; // 기본상태 : Idle
 
     public GameObject player;
+    public GameObject startPos;
 
     Animator anim;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        cState = state.Start;
+        anim.SetTrigger("doStart");
+        transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, 1f);
     }
 
     void Update()
     {
         //checkState();
+        jumpToStartPos();
+    }
+
+    void jumpToStartPos()
+    {
+        if (cState == state.Start)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, 1f * Time.deltaTime);
+
+            // 목표 지점에 도달하면 상태를 변경합니다.
+            if (transform.position == startPos.transform.position)
+            {
+                cState = state.Idle;
+            }
+        }
     }
 
     void checkState()
