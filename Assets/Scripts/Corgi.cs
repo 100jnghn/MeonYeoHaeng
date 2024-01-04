@@ -15,7 +15,8 @@ public class Corgi : MonoBehaviour
         SitUp,
         Turn,
         Eat,
-        Look
+        Look,
+        Jump
     };
 
     public state cState = state.Idle; // 기본상태 : Idle
@@ -96,7 +97,18 @@ public class Corgi : MonoBehaviour
 
         cState = state.Idle;
     }
+    public void doWait()
+    {
+        anim.SetTrigger("doWait");
 
+        cState = state.Wait;
+    }
+    public void doJump()
+    {
+        anim.SetTrigger("doJump");
+
+        cState = state.Idle;
+    }
     public void doLook()
     {
         transform.LookAt(player.transform.position);

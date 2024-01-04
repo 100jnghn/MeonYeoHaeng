@@ -13,6 +13,7 @@ public class SpeechRecognition : MonoBehaviour
 
     public GameObject DogGum;
     public GameObject clone;
+    public GameObject saliva;
     Corgi corgi;
 
     private void Awake()
@@ -81,15 +82,22 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.doSit();
                 break;
 
-            case "Eat.":
+            case "Wait.":
+                UnityEngine.Debug.Log("Action : Wait");
+                corgi.cState = Corgi.state.Jump;
+                corgi.doJump();
+                break;
+
+            case "Good boy.":
                 UnityEngine.Debug.Log("Action : Eat");
                 corgi.cState = Corgi.state.Eat;
                 corgi.doEat();
+                saliva.SetActive(false);
 
                 Destroy(clone);
                 break;
 
-            case "Turn.":
+            case "Turn around.":
                 UnityEngine.Debug.Log("Action : Turn");
                 corgi.cState = Corgi.state.Turn;
 
@@ -111,11 +119,14 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.doSitUp();
                 break;
 
-            case "Bone.": // »À »ý¼º
+            case "Bring snack.":
                 UnityEngine.Debug.Log("Create : Bone");
+                UnityEngine.Debug.Log("Action : Wait");
+                corgi.cState = Corgi.state.Wait;
+                corgi.doWait();
                 clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
                 clone.SetActive(true);
-
+                saliva.SetActive(true);
                 break;
         }
     }
