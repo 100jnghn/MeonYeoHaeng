@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class SpeechRecognition : MonoBehaviour
 {
-    private string speechKey = "39cf770484cc49a88518708648e11238";
+    private string speechKey = "d927e5ec5f6641b5babf651e1f41355d";
     private string serviceRegion = "koreacentral";
-    
+    private bool isRecognizing;
+
+
     public GameObject DogGum;
     public GameObject clone;
     Corgi corgi;
@@ -20,6 +22,7 @@ public class SpeechRecognition : MonoBehaviour
 
     private async void Start()
     {
+        isRecognizing = true;
         await RecognizeSpeechAsync();
     }
 
@@ -28,7 +31,7 @@ public class SpeechRecognition : MonoBehaviour
         var config = SpeechConfig.FromSubscription(speechKey, serviceRegion);
         using (var recognizer = new SpeechRecognizer(config))
         {
-            while (true) 
+            while (isRecognizing)
             {
                 var result = await recognizer.RecognizeOnceAsync();
 
@@ -57,16 +60,24 @@ public class SpeechRecognition : MonoBehaviour
             }
         }
     }
+    private void OnDisable()
+    {
+        isRecognizing = false;
+    }
+    private void OnApplicationQuit()
+    {
+        isRecognizing = false;
+    }
 
     // 인식된 음성에 따른 행동
     public void doAction(string msg)
     {
-        switch(msg)
+        switch (msg)
         {
             case "Sit.":
                 UnityEngine.Debug.Log("Action : Sit");
                 corgi.cState = Corgi.state.Sit;
-               
+
                 corgi.doSit();
                 break;
 
@@ -81,14 +92,14 @@ public class SpeechRecognition : MonoBehaviour
             case "Turn.":
                 UnityEngine.Debug.Log("Action : Turn");
                 corgi.cState = Corgi.state.Turn;
-                
+
                 corgi.doTurn();
                 break;
 
             case "Happy.": // 이름 부름 -> 쳐다봄
                 UnityEngine.Debug.Log("Action : Look");
                 corgi.cState = Corgi.state.Look;
-               
+
                 corgi.doLook();
                 break;
 
@@ -109,5 +120,6 @@ public class SpeechRecognition : MonoBehaviour
         }
     }
 
-    
+
 }
+
