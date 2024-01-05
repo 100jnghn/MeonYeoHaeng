@@ -81,7 +81,22 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.doSit();
                 break;
 
+            case "SIT.":
+                UnityEngine.Debug.Log("Action : Sit");
+                corgi.cState = Corgi.state.Sit;
+
+                corgi.doSit();
+                break;
+
             case "Eat.":
+                UnityEngine.Debug.Log("Action : Eat");
+                corgi.cState = Corgi.state.Eat;
+                corgi.doEat();
+
+                Destroy(clone);
+                break;
+
+            case "EAT.":
                 UnityEngine.Debug.Log("Action : Eat");
                 corgi.cState = Corgi.state.Eat;
                 corgi.doEat();
@@ -96,7 +111,25 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.doTurn();
                 break;
 
+            case "TURN.":
+                UnityEngine.Debug.Log("Action : Turn");
+                corgi.cState = Corgi.state.Turn;
+
+                corgi.doTurn();
+                break;
+
             case "Happy.": // ÀÌ¸§ ºÎ¸§ -> ÃÄ´Ùº½
+                /*
+                UnityEngine.Debug.Log("Action : Look");
+                corgi.cState = Corgi.state.Look;
+
+                corgi.doLook();
+                */
+                UnityEngine.Debug.Log("Action : Appear");
+                corgi.showDog();
+                break;
+
+            case "HAPPY.": // ÀÌ¸§ ºÎ¸§ -> ÃÄ´Ùº½
                 /*
                 UnityEngine.Debug.Log("Action : Look");
                 corgi.cState = Corgi.state.Look;
@@ -117,7 +150,23 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Bone.": // »À »ý¼º
                 UnityEngine.Debug.Log("Create : Bone");
-                clone = Instantiate(DogGum, new Vector3(0, 0, 8), DogGum.transform.rotation);
+                clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
+                clone.SetActive(true);
+
+                break;
+
+
+            case "BONE.": // »À »ý¼º
+                UnityEngine.Debug.Log("Create : Bone");
+                clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
+                clone.SetActive(true);
+
+                break;
+
+
+            case "Phone.": // »À »ý¼º
+                UnityEngine.Debug.Log("Create : Bone");
+                clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
                 clone.SetActive(true);
 
                 break;
