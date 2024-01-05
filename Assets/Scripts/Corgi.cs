@@ -31,21 +31,34 @@ public class Corgi : MonoBehaviour
         anim = GetComponent<Animator>();
 
         cState = state.Start;
-        anim.SetTrigger("doStart");
-        transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, 1f);
+        //anim.SetTrigger("doStart");
+        //transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, 1f);
+        changeFirstPlace();
     }
 
     void Update()
     {
         //checkState();
+        //jumpToStartPos();
+    }
+
+    void changeFirstPlace()
+    {
+        transform.position = new Vector3(0, 1000, 0);
+    }
+
+    public void showDog()
+    {
+        transform.position = new Vector3(-1, 0, 2);
         jumpToStartPos();
     }
 
-    void jumpToStartPos()
+    public void jumpToStartPos()
     {
+        anim.SetTrigger("doStart");
         if (cState == state.Start)
         {
-            transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, 1f * Time.deltaTime);
+            // transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, 1f * Time.deltaTime);
 
             // 목표 지점에 도달하면 상태를 변경합니다.
             if (transform.position == startPos.transform.position)

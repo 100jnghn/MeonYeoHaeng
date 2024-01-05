@@ -97,10 +97,14 @@ public class SpeechRecognition : MonoBehaviour
                 break;
 
             case "Happy.": // 이름 부름 -> 쳐다봄
+                /*
                 UnityEngine.Debug.Log("Action : Look");
                 corgi.cState = Corgi.state.Look;
 
                 corgi.doLook();
+                */
+                UnityEngine.Debug.Log("Action : Appear");
+                corgi.showDog();
                 break;
 
             case "Stand up.": // 일어나!
@@ -113,7 +117,7 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Bone.": // 뼈 생성
                 UnityEngine.Debug.Log("Create : Bone");
-                clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+                clone = Instantiate(DogGum, new Vector3(0, 0, 8), DogGum.transform.rotation);
                 clone.SetActive(true);
 
                 break;
