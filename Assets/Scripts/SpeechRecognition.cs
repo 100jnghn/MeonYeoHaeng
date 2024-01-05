@@ -1,4 +1,5 @@
 using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
@@ -31,7 +32,8 @@ public class SpeechRecognition : MonoBehaviour
     private async Task RecognizeSpeechAsync()
     {
         var config = SpeechConfig.FromSubscription(speechKey, serviceRegion);
-        using (var recognizer = new SpeechRecognizer(config))
+        var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+        using (var recognizer = new SpeechRecognizer(config, audioConfig))
         {
             while (isRecognizing)
             {
@@ -46,6 +48,7 @@ public class SpeechRecognition : MonoBehaviour
                 else if (result.Reason == ResultReason.NoMatch)
                 {
                     UnityEngine.Debug.Log($"牢侥阂啊");
+                    TextConfirm.instance.TextTextDebug("$UNKOWN");
                 }
                 else if (result.Reason == ResultReason.Canceled)
                 {
@@ -82,6 +85,7 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Sit.":
                 UnityEngine.Debug.Log("Action : Sit");
+                TextConfirm.instance.TextTextDebug("Action : Sit");
                 corgi.cState = Corgi.state.Sit;
 
                 corgi.doSit();
@@ -89,6 +93,8 @@ public class SpeechRecognition : MonoBehaviour
 
             case "SIT.":
                 UnityEngine.Debug.Log("Action : Sit");
+                TextConfirm.instance.TextTextDebug("Action : SIT.");
+
                 corgi.cState = Corgi.state.Sit;
 
                 corgi.doSit();
@@ -96,6 +102,8 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Eat.":
                 UnityEngine.Debug.Log("Action : Eat");
+                TextConfirm.instance.TextTextDebug("Action : Eat");
+
                 corgi.cState = Corgi.state.Eat;
                 corgi.doEat();
 
@@ -104,6 +112,8 @@ public class SpeechRecognition : MonoBehaviour
 
             case "EAT.":
                 UnityEngine.Debug.Log("Action : Eat");
+                TextConfirm.instance.TextTextDebug("Action : EAT.");
+
                 corgi.cState = Corgi.state.Eat;
                 corgi.doEat();
 
@@ -112,6 +122,8 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Turn.":
                 UnityEngine.Debug.Log("Action : Turn");
+                TextConfirm.instance.TextTextDebug("Action : Turn");
+
                 corgi.cState = Corgi.state.Turn;
 
                 corgi.doTurn();
@@ -119,6 +131,7 @@ public class SpeechRecognition : MonoBehaviour
 
             case "TURN.":
                 UnityEngine.Debug.Log("Action : Turn");
+                TextConfirm.instance.TextTextDebug("Action : TURN.");
                 corgi.cState = Corgi.state.Turn;
 
                 corgi.doTurn();
@@ -132,6 +145,7 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.doLook();
                 */
                 UnityEngine.Debug.Log("Action : Appear");
+                TextConfirm.instance.TextTextDebug("Action : Happy.");
                 corgi.showDog();
                 break;
 
@@ -143,12 +157,14 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.doLook();
                 */
                 UnityEngine.Debug.Log("Action : Appear");
+                TextConfirm.instance.TextTextDebug("Action : HAPPY.");
                 corgi.showDog();
                 break;
 
             case "Stand up.": // 老绢唱!
 
                 UnityEngine.Debug.Log("Action : Sit UP");
+                TextConfirm.instance.TextTextDebug("Action : Sit UP.");
                 corgi.cState = Corgi.state.SitUp;
 
                 corgi.doSitUp();
@@ -156,6 +172,7 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Bone.": // 焕 积己
                 UnityEngine.Debug.Log("Create : Bone");
+                TextConfirm.instance.TextTextDebug("Action : Bone.");
                 clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
                 clone.SetActive(true);
 
@@ -164,6 +181,7 @@ public class SpeechRecognition : MonoBehaviour
 
             case "BONE.": // 焕 积己
                 UnityEngine.Debug.Log("Create : Bone");
+                TextConfirm.instance.TextTextDebug("Action : BONE.");
                 clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
                 clone.SetActive(true);
 
@@ -172,6 +190,7 @@ public class SpeechRecognition : MonoBehaviour
 
             case "Phone.": // 焕 积己
                 UnityEngine.Debug.Log("Create : Bone");
+                TextConfirm.instance.TextTextDebug("Action : BONE.");
                 clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
                 clone.SetActive(true);
 
