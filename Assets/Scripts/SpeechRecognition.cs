@@ -13,6 +13,8 @@ public class SpeechRecognition : MonoBehaviour
 
     public GameObject DogGum;
     public GameObject clone;
+    public GameObject cube;
+
     Corgi corgi;
 
     private void Awake()
@@ -74,6 +76,10 @@ public class SpeechRecognition : MonoBehaviour
     {
         switch (msg)
         {
+            case "CUBE.":
+                Instantiate(cube);
+                break;
+
             case "Sit.":
                 UnityEngine.Debug.Log("Action : Sit");
                 corgi.cState = Corgi.state.Sit;
