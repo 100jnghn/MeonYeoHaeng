@@ -93,6 +93,7 @@ public class Corgi : MonoBehaviour
 
     public void doEat()
     {
+        UnityEngine.Debug.Log("Corgi script entered");
         anim.SetTrigger("doEat");
 
         cState = state.Idle;

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class SpeechRecognition : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class SpeechRecognition : MonoBehaviour
     public GameObject clone;
     public GameObject saliva;
     Corgi corgi;
+    public GumScript gumScript;
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class SpeechRecognition : MonoBehaviour
 
     private async void Start()
     {
+        //GumScript gumScript = FindObjectOfType<GumScript>();
         isRecognizing = true;
         await RecognizeSpeechAsync();
     }
@@ -70,6 +73,23 @@ public class SpeechRecognition : MonoBehaviour
         isRecognizing = false;
     }
 
+    IEnumerator BiteSeq()
+    {
+        UnityEngine.Debug.Log("bite sequence entered");
+        corgi.cState = Corgi.state.Eat;
+        corgi.doEat();
+        saliva.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        gumScript.biteGum();
+        yield return new WaitForSeconds(2.0f);
+        Destroy(clone);
+    }
+    IEnumerator DestroyAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(obj);
+    }
+
     // 인식된 음성에 따른 행동
     public void doAction(string msg)
     {
@@ -86,15 +106,6 @@ public class SpeechRecognition : MonoBehaviour
                 UnityEngine.Debug.Log("Action : Wait");
                 corgi.cState = Corgi.state.Jump;
                 corgi.doJump();
-                break;
-
-            case "Good boy.":
-                UnityEngine.Debug.Log("Action : Eat");
-                corgi.cState = Corgi.state.Eat;
-                corgi.doEat();
-                saliva.SetActive(false);
-
-                Destroy(clone);
                 break;
 
             case "Turn around.":
@@ -125,9 +136,21 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.cState = Corgi.state.Wait;
                 corgi.doWait();
                 clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+                gumScript = clone.GetComponent<GumScript>();
                 clone.SetActive(true);
                 saliva.SetActive(true);
                 break;
+
+            case "Good boy.":
+                UnityEngine.Debug.Log("Action : Eat");
+                //corgi.cState = Corgi.state.Eat;
+                //corgi.doEat();
+                //gumScript.biteGum();
+                //StartCoroutine(DestroyAfterDelay(clone, 3.0f));
+                StartCoroutine(BiteSeq());
+                break;
+
+
         }
     }
 
