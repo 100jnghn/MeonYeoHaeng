@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class SpeechRecognition : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SpeechRecognition : MonoBehaviour
     public GameObject DogGum;
     public GameObject clone;
     public GameObject cube;
+    public GameObject saliva;
+    public GumScript gumScript;
 
     Corgi corgi;
 
@@ -73,6 +76,23 @@ public class SpeechRecognition : MonoBehaviour
     {
         isRecognizing = false;
     }
+    IEnumerator BiteSeq()
+    {
+        UnityEngine.Debug.Log("bite sequence entered");
+        corgi.cState = Corgi.state.Eat;
+        corgi.doEat();
+        saliva.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        gumScript.biteGum();
+        yield return new WaitForSeconds(2.0f);
+        Destroy(clone);
+    }
+    IEnumerator DestroyAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(obj);
+    }
+
 
     // 牢侥等 澜己俊 蝶弗 青悼
     public void doAction(string msg)
@@ -170,31 +190,40 @@ public class SpeechRecognition : MonoBehaviour
                 corgi.doSitUp();
                 break;
 
-            case "Bone.": // 焕 积己
+            case "Snack.":
                 UnityEngine.Debug.Log("Create : Bone");
-                TextConfirm.instance.TextTextDebug("Action : Bone.");
-                clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
-                clone.SetActive(true);
-
-                break;
-
-
-            case "BONE.": // 焕 积己
-                UnityEngine.Debug.Log("Create : Bone");
+                UnityEngine.Debug.Log("Action : Wait");
                 TextConfirm.instance.TextTextDebug("Action : BONE.");
-                clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
+                corgi.cState = Corgi.state.Wait;
+                corgi.doWait();
+                clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+                gumScript = clone.GetComponent<GumScript>();
                 clone.SetActive(true);
-
+                saliva.SetActive(true);
                 break;
-
-
-            case "Phone.": // 焕 积己
+            case "SNACK.":
                 UnityEngine.Debug.Log("Create : Bone");
+                UnityEngine.Debug.Log("Action : Wait");
                 TextConfirm.instance.TextTextDebug("Action : BONE.");
-                clone = Instantiate(DogGum, new Vector3(-1, 0, 1), DogGum.transform.rotation);
+                corgi.cState = Corgi.state.Wait;
+                corgi.doWait();
+                clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+                gumScript = clone.GetComponent<GumScript>();
                 clone.SetActive(true);
-
+                saliva.SetActive(true);
                 break;
+
+            case "Wait.":
+                UnityEngine.Debug.Log("Action : Wait");
+                corgi.cState = Corgi.state.Bark;
+                corgi.doBark();
+                break;
+
+            case "Good boy.":
+                UnityEngine.Debug.Log("Action : Eat");
+                StartCoroutine(BiteSeq());
+                break;
+
         }
     }
 

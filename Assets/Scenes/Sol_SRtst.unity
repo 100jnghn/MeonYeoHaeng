@@ -11078,6 +11078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cState: 0
   player: {fileID: 0}
+  startPos: {fileID: 0}
 --- !u!114 &1909223433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11092,6 +11093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DogGum: {fileID: 3433301227161223402, guid: bfbdc38ccf53bae489be4ae87990c766, type: 3}
   clone: {fileID: 0}
+  cube: {fileID: 0}
   saliva: {fileID: 991744310}
   gumScript: {fileID: 0}
 --- !u!4 &1909223435 stripped
