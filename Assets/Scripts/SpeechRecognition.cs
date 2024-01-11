@@ -41,7 +41,7 @@ public class SpeechRecognition : MonoBehaviour
 
         if (microphoneDevices.Length > 0)
         {
-            microphoneStatus += "현재 연결된 마이크 리스트:\n";
+            microphoneStatus += "connected mic list:\n";
 
             for (int i = 0; i < microphoneDevices.Length; i++)
             {
@@ -50,7 +50,7 @@ public class SpeechRecognition : MonoBehaviour
         }
         else
         {
-            microphoneStatus = "현재 연결된 마이크가 없습니다.";
+            microphoneStatus = "no mic available";
         }
         TextConfirm.instance.TextTextDebug(microphoneStatus);
     }
@@ -59,13 +59,19 @@ public class SpeechRecognition : MonoBehaviour
     private async Task RecognizeSpeechAsync()
     {
         CheckMicrophoneStatus();
+
         var config = SpeechConfig.FromSubscription(speechKey, serviceRegion);
+        TextConfirm.instance.TextTextDebug($"SpeechConfig: {config}");
         var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+        TextConfirm.instance.TextTextDebug($"AudioConfig: {audioConfig}");
+
         using (var recognizer = new SpeechRecognizer(config, audioConfig))
         {
-            while (isRecognizing)
-            {
-                var result = await recognizer.RecognizeOnceAsync();
+            TextConfirm.instance.TextTextDebug("SpeechRecognizer created");
+
+            //while (isRecognizing)
+            //{
+            var result = await recognizer.RecognizeOnceAsync();
 
                 if (result.Reason == ResultReason.RecognizedSpeech)
                 {
@@ -90,7 +96,7 @@ public class SpeechRecognition : MonoBehaviour
                         UnityEngine.Debug.Log($"취소: 구독정보 갱신");
                     }
                 }
-            }
+            //}
         }
     }
     private void OnDisable()
