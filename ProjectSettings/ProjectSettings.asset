@@ -890,7 +890,9 @@ PlayerSettings:
       InternetClient: True
       WebCam: True
       Microphone: True
-  metroTargetDeviceFamilies: {}
+  metroTargetDeviceFamilies:
+    Holographic: True
+    Mobile: True
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
