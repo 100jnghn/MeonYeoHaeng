@@ -32,8 +32,33 @@ public class SpeechRecognition : MonoBehaviour
         await RecognizeSpeechAsync();
     }
 
+    void CheckMicrophoneStatus()
+    {
+        string microphoneStatus = "";
+
+        // 현재 시스템에 연결된 모든 마이크의 목록을 얻음
+        string[] microphoneDevices = Microphone.devices;
+
+        if (microphoneDevices.Length > 0)
+        {
+            microphoneStatus += "현재 연결된 마이크 리스트:\n";
+
+            for (int i = 0; i < microphoneDevices.Length; i++)
+            {
+                microphoneStatus += $"- {microphoneDevices[i]}\n";
+            }
+        }
+        else
+        {
+            microphoneStatus = "현재 연결된 마이크가 없습니다.";
+        }
+        TextConfirm.instance.TextTextDebug(microphoneStatus);
+    }
+
+
     private async Task RecognizeSpeechAsync()
     {
+        CheckMicrophoneStatus();
         var config = SpeechConfig.FromSubscription(speechKey, serviceRegion);
         var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
         using (var recognizer = new SpeechRecognizer(config, audioConfig))
