@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9acc7968244a8886f3af591305bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeProfile: {fileID: 11400000, guid: 31a611a779d3499e8e35f1a2018ca841, type: 2}
+  activeProfile: {fileID: 11400000, guid: fa613034e9dbe0a47ad956d7026a60bd, type: 2}
 --- !u!4 &114442101
 Transform:
   m_ObjectHideFlags: 0
@@ -198,6 +198,182 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 902380248}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &176338991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176338993}
+  - component: {fileID: 176338992}
+  m_Layer: 0
+  m_Name: SpeechInputHandler_Global
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &176338992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176338991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 0
+  keywords:
+  - keyword: Happy
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481245}
+          m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
+          m_MethodName: showDog
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - keyword: Turn
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481245}
+          m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
+          m_MethodName: doTurn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - keyword: Sit
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481245}
+          m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
+          m_MethodName: doSit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - keyword: Stand up
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481245}
+          m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
+          m_MethodName: doSitUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - keyword: Snack
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481245}
+          m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
+          m_MethodName: makeSnack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - keyword: Wait
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481245}
+          m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
+          m_MethodName: doBark
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - keyword: Good Boy
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481245}
+          m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
+          m_MethodName: doEat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - keyword: Bye
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 565481240}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 8046114618238072051, guid: 271778f6c957b524981067a81d238394, type: 3}
+--- !u!4 &176338993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176338991}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.034657583, y: 0.3267172, z: -0.09633097}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &217980619
@@ -667,6 +843,10 @@ MonoBehaviour:
   cState: 0
   player: {fileID: 902380247}
   startPos: {fileID: 1160244626}
+  DogGum: {fileID: 3433301227161223402, guid: bfbdc38ccf53bae489be4ae87990c766, type: 3}
+  clone: {fileID: 0}
+  saliva: {fileID: 1953842960}
+  gumScript: {fileID: 0}
 --- !u!114 &565481246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,7 +854,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565481240}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 416a6e9f2e5073446a88150250c11024, type: 3}
   m_Name: 
@@ -1738,6 +1918,10 @@ MonoBehaviour:
   cState: 0
   player: {fileID: 902380247}
   startPos: {fileID: 1160244626}
+  DogGum: {fileID: 0}
+  clone: {fileID: 0}
+  saliva: {fileID: 0}
+  gumScript: {fileID: 0}
 --- !u!114 &1648336701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11701,3 +11885,4 @@ SceneRoots:
   - {fileID: 1202878321}
   - {fileID: 1160244627}
   - {fileID: 565481239}
+  - {fileID: 176338993}
