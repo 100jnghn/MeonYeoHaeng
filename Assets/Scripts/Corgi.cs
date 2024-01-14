@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using System.Collections;
 public class Corgi : MonoBehaviour
 {
     // 강아지 상태
@@ -27,7 +29,15 @@ public class Corgi : MonoBehaviour
     public GameObject DogGum;
     public GameObject clone;
     public GameObject saliva;
+    public GameObject crumbles;
     public GumScript gumScript;
+    public AudioSource audioSource;
+    public AudioClip waitSound;
+    public AudioClip barkSound;
+    public AudioClip eatingSound;
+    public AudioClip JumpSound;
+    public AudioClip idleSound;
+
 
     Animator anim;
 
@@ -35,19 +45,79 @@ public class Corgi : MonoBehaviour
     {
         UnityEngine.Debug.Log("bite sequence entered");
         cState = Corgi.state.Eat;
-        doEat();
+        //doEat();
+
+        anim.SetTrigger("doEat");
         saliva.SetActive(false);
         yield return new WaitForSeconds(1.5f);
+        if (audioSource != null && eatingSound != null)
+        {
+            audioSource.clip = eatingSound;
+            audioSource.loop = false;
+            audioSource.Play();
+        }
         gumScript.biteGum();
+        crumbles.SetActive(true);
+
         yield return new WaitForSeconds(2.0f);
         Destroy(clone);
+        yield return new WaitForSeconds(0.5f);
+
+        crumbles.SetActive(false);
+        cState = state.Idle;
+
+        audioSource.clip = idleSound;
+        audioSource.loop = true;
+        audioSource.Play();
+
+
     }
     IEnumerator DestroyAfterDelay(GameObject obj, float delay)
     {
         yield return new WaitForSeconds(delay);
         Destroy(obj);
     }
+    IEnumerator PlaySoundAfterAnother(AudioClip a, AudioClip b)
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (audioSource != null && a != null)
+        {
+            audioSource.loop = false;
+            audioSource.clip = a;
+            audioSource.Play();
+        }
+        yield return new WaitForSeconds(a.length);
 
+        if (cState == state.Wait)
+        {
+            audioSource.clip = b;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+
+    }
+    IEnumerator Playidle()
+    {
+        if (audioSource != null && JumpSound != null)
+        {
+            audioSource.loop = false;
+            audioSource.clip = JumpSound;
+            audioSource.Play();
+        }
+        yield return new WaitForSeconds(JumpSound.length);
+
+        if (cState == state.Idle)
+        {
+            audioSource.clip = idleSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+
+    }
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+    }
 
     void Start()
     {
@@ -63,8 +133,20 @@ public class Corgi : MonoBehaviour
     {
         //checkState();
         //jumpToStartPos();
-    }
+        //if (cState == state.Idle && audioSource.clip != idleSound)
+        //{
+        //    audioSource.loop = true;
+        //    audioSource.clip = idleSound;
+        //    audioSource.Play();
+        //}
+        //else if (cState != state.Idle && audioSource.clip == idleSound)
+        //{
+        //    audioSource.Stop();
+        //
+        //}
+        //
 
+    }
     void changeFirstPlace()
     {
         transform.position = new Vector3(0, 1000, 0);
@@ -72,7 +154,13 @@ public class Corgi : MonoBehaviour
 
     public void showDog()
     {
-        transform.position = new Vector3(-1, 0, 2);
+        transform.position = startPos.transform.position;
+        //if (audioSource != null && JumpSound != null)
+        //{
+        //    audioSource.clip = JumpSound;
+        //    audioSource.Play();
+        //}
+        StartCoroutine(Playidle());
         jumpToStartPos();
     }
 
@@ -130,7 +218,7 @@ public class Corgi : MonoBehaviour
     {
         anim.SetTrigger("doSit");
 
-        cState = state.Wait;
+        cState = state.Idle;
     }
 
     public void doSitUp()
@@ -151,18 +239,27 @@ public class Corgi : MonoBehaviour
     {
         UnityEngine.Debug.Log("Corgi script entered");
         StartCoroutine(BiteSeq());
+
     }
     public void doWait()
     {
         anim.SetTrigger("doWait");
-
         cState = state.Wait;
+
+        if (audioSource != null && waitSound != null)
+        {
+            audioSource.clip = waitSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
     public void doBark()
     {
         anim.SetTrigger("doBark");
+        cState = state.Wait;
 
-        cState = state.Idle;
+        StartCoroutine(PlaySoundAfterAnother(barkSound, waitSound));
+
     }
     public void doLook()
     {
@@ -179,3 +276,5 @@ public class Corgi : MonoBehaviour
         saliva.SetActive(true);
     }
 }
+
+
