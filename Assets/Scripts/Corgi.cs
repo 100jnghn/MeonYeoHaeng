@@ -24,8 +24,30 @@ public class Corgi : MonoBehaviour
 
     public GameObject player;
     public GameObject startPos;
+    public GameObject DogGum;
+    public GameObject clone;
+    public GameObject saliva;
+    public GumScript gumScript;
 
     Animator anim;
+
+    IEnumerator BiteSeq()
+    {
+        UnityEngine.Debug.Log("bite sequence entered");
+        cState = Corgi.state.Eat;
+        doEat();
+        saliva.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        gumScript.biteGum();
+        yield return new WaitForSeconds(2.0f);
+        Destroy(clone);
+    }
+    IEnumerator DestroyAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(obj);
+    }
+
 
     void Start()
     {
@@ -128,9 +150,7 @@ public class Corgi : MonoBehaviour
     public void doEat()
     {
         UnityEngine.Debug.Log("Corgi script entered");
-        anim.SetTrigger("doEat");
-
-        cState = state.Idle;
+        StartCoroutine(BiteSeq());
     }
     public void doWait()
     {
@@ -147,5 +167,15 @@ public class Corgi : MonoBehaviour
     public void doLook()
     {
         transform.LookAt(player.transform.position);
+    }
+
+    public void makeSnack()
+    {
+        cState = Corgi.state.Wait;
+        doWait();
+        clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+        gumScript = clone.GetComponent<GumScript>();
+        clone.SetActive(true);
+        saliva.SetActive(true);
     }
 }
