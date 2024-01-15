@@ -235,7 +235,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481245}
+        - m_Target: {fileID: 322340776}
           m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
           m_MethodName: showDog
           m_Mode: 1
@@ -251,7 +251,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481245}
+        - m_Target: {fileID: 322340776}
           m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
           m_MethodName: doTurn
           m_Mode: 1
@@ -267,7 +267,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481245}
+        - m_Target: {fileID: 322340776}
           m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
           m_MethodName: doSit
           m_Mode: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481245}
+        - m_Target: {fileID: 322340776}
           m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
           m_MethodName: doSitUp
           m_Mode: 1
@@ -299,7 +299,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481245}
+        - m_Target: {fileID: 322340776}
           m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
           m_MethodName: makeSnack
           m_Mode: 1
@@ -315,7 +315,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481245}
+        - m_Target: {fileID: 322340776}
           m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
           m_MethodName: doBark
           m_Mode: 1
@@ -331,7 +331,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481245}
+        - m_Target: {fileID: 322340776}
           m_TargetAssemblyTypeName: Corgi, Assembly-CSharp
           m_MethodName: doEat
           m_Mode: 1
@@ -347,7 +347,7 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 565481240}
+        - m_Target: {fileID: 322340766}
           m_TargetAssemblyTypeName: 
           m_MethodName: 
           m_Mode: 1
@@ -697,6 +697,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7614231225992287547, guid: 18470d71939382448be2ecd06efa9662, type: 3}
   m_PrefabInstance: {fileID: 217980619}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &322340765
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3501676868697925803, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 902380247}
+    - target: {fileID: 3501676868697925803, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: startPos
+      value: 
+      objectReference: {fileID: 1160244626}
+    - target: {fileID: 4367353661686417193, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_Name
+      value: Corgi (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.023981873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9997124
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -182.748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686651657, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+--- !u!1 &322340766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4367353661686417193, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+  m_PrefabInstance: {fileID: 322340765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &322340776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3501676868697925803, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+  m_PrefabInstance: {fileID: 322340765}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322340766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0ae529e91a9c947b2efc317d2b39d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &565481239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,6 +793,10 @@ PrefabInstance:
     - target: {fileID: 4367353661686417193, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
       propertyPath: m_Name
       value: Corgi (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367353661686417193, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4367353661686417193, guid: 13f9d49c8b0b6d74dabea07daffb6715, type: 3}
       propertyPath: m_TagString
@@ -846,7 +931,14 @@ MonoBehaviour:
   DogGum: {fileID: 3433301227161223402, guid: bfbdc38ccf53bae489be4ae87990c766, type: 3}
   clone: {fileID: 0}
   saliva: {fileID: 1953842960}
+  crumbles: {fileID: 0}
   gumScript: {fileID: 0}
+  audioSource: {fileID: 0}
+  waitSound: {fileID: 0}
+  barkSound: {fileID: 0}
+  eatingSound: {fileID: 0}
+  JumpSound: {fileID: 0}
+  idleSound: {fileID: 0}
 --- !u!114 &565481246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,7 +1680,7 @@ Transform:
   m_GameObject: {fileID: 1160244626}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1921,7 +2013,14 @@ MonoBehaviour:
   DogGum: {fileID: 0}
   clone: {fileID: 0}
   saliva: {fileID: 0}
+  crumbles: {fileID: 0}
   gumScript: {fileID: 0}
+  audioSource: {fileID: 0}
+  waitSound: {fileID: 0}
+  barkSound: {fileID: 0}
+  eatingSound: {fileID: 0}
+  JumpSound: {fileID: 0}
+  idleSound: {fileID: 0}
 --- !u!114 &1648336701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1957,7 +2056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1847285778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11886,3 +11985,4 @@ SceneRoots:
   - {fileID: 1160244627}
   - {fileID: 565481239}
   - {fileID: 176338993}
+  - {fileID: 322340765}

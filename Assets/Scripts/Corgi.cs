@@ -270,7 +270,7 @@ public class Corgi : MonoBehaviour
     {
         cState = Corgi.state.Wait;
         doWait();
-        clone = Instantiate(DogGum, new Vector3(0, 0, 0), DogGum.transform.rotation);
+        clone = Instantiate(DogGum, new Vector3(0, 1, 0), DogGum.transform.rotation);
         gumScript = clone.GetComponent<GumScript>();
         clone.SetActive(true);
         saliva.SetActive(true);
