@@ -13,6 +13,7 @@
 - Target Platform - Google Hololens
 <br>
 <br>
+
 ## 2. 작품 소개
 국내외로 반려동물 양육 가구 수는 꾸준히 증가해왔고, 최근에는 반려도물 시장이 급격히 성장하고 있습니다. <br>
 이에 따라 반려동물 납골당, 반려동물 호텔, 펫 택시 등과 같이 반려동물과 관련된 수 많은 서비스들이 생겨나고 있습니다. <br>
@@ -27,7 +28,9 @@
 <br>
 사용자의 반려동물에 대한 정보를 바탕으로 XR Device를 통해 자신의 반려동물 모델을 생생한 모습으로 마주할 수 있습니다.<br>
 <br>
+
 ## 3. 기능 설명
+
 ![image](https://github.com/user-attachments/assets/f1a2e3ab-5a74-4e6b-bf74-97b41e1a524d)
 반려동물 납골당에 방문하여 서비스를 사용하는 상황을 가정<br>
 <br>
@@ -37,3 +40,14 @@
 ![image](https://github.com/user-attachments/assets/67bf6d64-0cba-4ed2-be86-22665d3cb5ef)
 반려동물의 이름을 부르면 기기가 음성을 인식하여 가상의 반려동물 모델 생성<br>
 <br>
+![image](https://github.com/user-attachments/assets/2dbc54b0-2aa7-404f-973a-d9e7c103751f)
+STT(Speach To Text)를 사용하여 다양한 명령어로 반려동물과 상호작용<br>
+앉아! 손! 등 다양한 명령어를 인식하여 자연스러운 상호작용 가능<br>
+<br>
+![image](https://github.com/user-attachments/assets/f83ef446-1323-4623-a79b-8ad907531811)
+![image](https://github.com/user-attachments/assets/8bcbec8b-81b3-47de-8991-9cdfdee89951)
+명령어와 마찬가지로 Speech를 통해 가상의 간식 모델 생성<br>
+사용자의 손을 인식하여 간식과 사용자 상호작용<br>
+<br>
+![image](https://github.com/user-attachments/assets/cea84eae-bac3-407b-9489-401012fb3452)
+앉아! 기다려! 먹어! 등 다양한 명령어를 통한 반려동물 - 간식 상호작용 제어
