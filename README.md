@@ -52,3 +52,13 @@ STT(Speach To Text)를 사용하여 다양한 명령어로 반려동물과 상�
 <br>
 ![image](https://github.com/user-attachments/assets/cea84eae-bac3-407b-9489-401012fb3452)
 앉아! 기다려! 먹어! 등 다양한 명령어를 통한 반려동물 - 간식 상호작용 제어
+<br>
+<br>
+<br>
+
+---
+
+#### ⬇️ Click IMG to play with youtube ⬇️
+<br>
+
+[![MYH](http://img.youtube.com/vi/9Wu3gvx-52Q/0.jpg)](https://youtu.be/9Wu3gvx-52Q?t=0s)
